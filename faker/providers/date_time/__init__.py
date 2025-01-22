@@ -1,3 +1,4 @@
+import logging
 import platform
 import re
 
@@ -19,6 +20,8 @@ from .. import BaseProvider, ElementsType
 
 localized = True
 
+log = logging.getLogger(__name__)
+
 
 def datetime_to_timestamp(dt: Union[dtdate, datetime]) -> int:
     if dt == datetime.min:
@@ -32,12 +35,14 @@ def datetime_to_timestamp(dt: Union[dtdate, datetime]) -> int:
 
 
 def convert_timestamp_to_datetime(timestamp: Union[int, float], tzinfo: TzInfo) -> datetime:
-    import datetime as dt
-
     if timestamp >= 0:
-        return dt.datetime.fromtimestamp(timestamp, tzinfo)
+        try:
+            return datetime.fromtimestamp(timestamp, tzinfo)
+        except OSError:
+            log.exception("OSError occurred while converting timestamp '%s' to datetime", timestamp)
+            raise
     else:
-        return dt.datetime(1970, 1, 1, tzinfo=tzinfo) + dt.timedelta(seconds=int(timestamp))
+        return datetime(1970, 1, 1, tzinfo=tzinfo) + timedelta(seconds=int(timestamp))
 
 
 def timestamp_to_datetime(timestamp: Union[int, float], tzinfo: Optional[TzInfo]) -> datetime:
@@ -1937,7 +1942,7 @@ class Provider(BaseProvider):
         if isinstance(value, timedelta):
             return datetime_to_timestamp(now + value)
         if isinstance(value, str):
-            if value == "now":
+            if value in ("today", "now"):
                 return datetime_to_timestamp(datetime.now(tzinfo))
             time_params = cls._parse_date_string(value)
             return datetime_to_timestamp(now + timedelta(**time_params))  # type: ignore
