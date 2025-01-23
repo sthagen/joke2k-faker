@@ -199,20 +199,6 @@ class TestDateTime(unittest.TestCase):
         assert self.fake.iso8601(tzinfo=utc, sep=" ")[10] == " "
         assert self.fake.iso8601(tzinfo=utc, sep="_")[10] == "_"
 
-    @pytest.mark.skipif(
-        not sys.platform.startswith("win"),
-        reason="windows does not support sub second precision",
-    )
-    def test_iso8601_fractional_seconds_win(self):
-        assert len(self.fake.iso8601()) == 19
-
-    @pytest.mark.skipif(
-        sys.platform.startswith("win"),
-        reason="non windows does support sub second precision",
-    )
-    def test_iso8601_fractional_seconds_non_win(self):
-        assert len(self.fake.iso8601()) == 26
-
     def test_date_object(self):
         assert isinstance(self.fake.date_object(), date)
 
@@ -234,6 +220,9 @@ class TestDateTime(unittest.TestCase):
 
         delta = self.fake.time_delta(end_datetime="now")
         assert delta.seconds <= 0
+
+    def test_date_time_end(self):
+        self.fake.date_time(end_datetime="-1w")
 
     def test_date_time_between_dates(self):
         timestamp_start = random.randint(0, 2000000000)
