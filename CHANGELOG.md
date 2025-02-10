@@ -1,5 +1,15 @@
 ## Changelog
 
+### [v36.0.0 - 2025-02-10](https://github.com/joke2k/faker/compare/v35.2.1...v36.0.0)
+
+* Drop Python 3.8 support. Thanks @knyghty.
+* Drop `python-dateutil` dependency. Thanks @knyghty.
+
+### [v35.2.1 - 2025-02-10](https://github.com/joke2k/faker/compare/v35.2.0...v35.2.1)
+
+* Remove invalid word from `ja_JP` lorem provider. Thanks @kymckay
+* Fix typing for `tar` provider.
+
 ### [v35.2.0 - 2025-01-30](https://github.com/joke2k/faker/compare/v35.1.0...v35.2.0)
 
 * Add various German localization. Thanks @ChristinaRau.
