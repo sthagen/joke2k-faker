@@ -67,8 +67,6 @@ setup(
     },
     platforms=["any"],
     zip_safe=zip_safe,
+    install_requires=["tzdata"],
     python_requires=">=3.9",
-    install_requires=[
-        "python-dateutil>=2.4",
-    ],
 )
