@@ -1,5 +1,13 @@
 ## Changelog
 
+### [v37.0.0 - 2025-03-07](https://github.com/joke2k/faker/compare/v36.2.3...v37.0.0)
+
+* Fix: `es_ES` `doi()` to use standard DOI format. Thanks @jasur-py.
+
+### [v36.2.3 - 2025-03-07](https://github.com/joke2k/faker/compare/v36.2.2...v36.2.3)
+
+* Fix typing for hash methods. Thanks @lindycoder.
+
 ### [v36.2.2 - 2025-03-05](https://github.com/joke2k/faker/compare/v36.2.1...v36.2.2)
 
 * Fix male prefix in `gu_IN`. Thanks @Hitesh1122.
