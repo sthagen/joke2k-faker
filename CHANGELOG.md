@@ -1,5 +1,21 @@
 ## Changelog
 
+### [v37.3.0 - 2025-05-14](https://github.com/joke2k/faker/compare/v37.2.1...v37.3.0)
+
+* Update `zh_TW` Person Provider. Thanks @0x6r1an0y.
+
+### [v37.2.1 - 2025-05-14](https://github.com/joke2k/faker/compare/v37.2.0...v37.2.1)
+
+* Remove duplicate cities in `de_DE` address provider. Thanks @KarelZe.
+
+### [v37.2.0 - 2025-05-14](https://github.com/joke2k/faker/compare/v37.1.1...v37.2.0)
+
+* Add person provider for is_IS locale. Thanks @sergey-scat.
+
+### [v37.1.1 - 2025-05-14](https://github.com/joke2k/faker/compare/v37.1.0...v37.1.1)
+
+* Fix type annotations for Python 3.14. Thanks @mgorny.
+
 ### [v37.1.0 - 2025-03-24](https://github.com/joke2k/faker/compare/v37.0.2...v37.1.0)
 
 * Add `ng_NG` currency provider. Thanks @Theocode12.
