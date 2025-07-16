@@ -1,5 +1,13 @@
 ## Changelog
 
+### [v37.4.2 - 2025-07-15](https://github.com/joke2k/faker/compare/v37.4.1...v37.4.2)
+
+* Fix the function for generating VIN, now the last 4 characters are digits. Thanks @nesb1.
+
+### [v37.4.1 - 2025-07-15](https://github.com/joke2k/faker/compare/v37.4.0...v37.4.1)
+
+* Fix leading 0s in building numbers for `de_DE` locale. Thanks @KarelZe.
+
 ### [v37.4.0 - 2025-06-11](https://github.com/joke2k/faker/compare/v37.3.4...v37.4.0)
 
 * Implement `Zh_CN` credit card provider. Thanks @JohananOppongAmoateng.
