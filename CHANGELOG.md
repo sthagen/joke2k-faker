@@ -1,5 +1,21 @@
 ## Changelog
 
+### [v37.5.3 - 2025-07-30](https://github.com/joke2k/faker/compare/v37.5.2...v37.5.3)
+
+* Allow `Decimal` type for `min_value` and `max_value` in `pydecimal`. Thanks @sshishov.
+
+### [v37.5.2 - 2025-07-30](https://github.com/joke2k/faker/compare/v37.5.1...v37.5.2)
+
+* Fix Turkish Republic National Number (TCKN) provider. Thanks @fleizean.
+
+### [v37.5.1 - 2025-07-30](https://github.com/joke2k/faker/compare/v37.5.0...v37.5.1)
+
+* Fix unnatural Korean company names in `ko_KR` locale. Thanks @r-4bb1t.
+
+### [v37.5.0 - 2025-07-30](https://github.com/joke2k/faker/compare/v37.4.3...v37.5.0)
+
+* Add Spanish lorem provider for `es_ES`, `es_AR` and `es_MX`. Thanks @Pandede.
+
 ### [v37.4.3 - 2025-07-30](https://github.com/joke2k/faker/compare/v37.4.2...v37.4.3)
 
 * Fix male names in `sv_SE` locale. Thanks @peterk.
