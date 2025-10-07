@@ -1,5 +1,14 @@
 ## Changelog
 
+
+### [v37.11.0 - 2025-10-07](https://github.com/joke2k/faker/compare/v37.9.0...v37.10.0)
+
+* Add French company APE code. Thanks @fabien-michel.
+
+### [v37.9.0 - 2025-10-07](https://github.com/joke2k/faker/compare/v37.8.0...v37.9.0)
+
+* Add names generation to `en_KE` locale. Thanks @titustum.
+
 ### [v37.8.0 - 2025-09-15](https://github.com/joke2k/faker/compare/v37.7.0...v37.8.0)
 
 * Add Automotive providers for `ja_JP` locale. Thanks @ItoRino424.
