@@ -1,5 +1,14 @@
 ## Changelog
 
+### [v38.2.0 - 2025-11-19](https://github.com/joke2k/faker/compare/v38.1.0...v38.2.0)
+
+* Add localized UniqueProxy. Thanks @azmeuk
+
+### [v38.1.0 - 2025-11-19](https://github.com/joke2k/faker/compare/v38.0.0...v38.1.0)
+
+* Add `person` provider for `ar_DZ` locale. Thanks @othmane099.
+* Add `person`, `phone_number`, `date_time` for `fr_DZ` locale.  Thanks @othmane099.
+
 ### [v38.0.0 - 2025-11-11](https://github.com/joke2k/faker/compare/v37.12.0...v38.0.0)
 
 * Drop support for Python 3.9
