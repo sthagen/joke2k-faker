@@ -1,5 +1,13 @@
 ## Changelog
 
+### [v40.1.2 - 2026-01-13](https://github.com/joke2k/faker/compare/v40.1.1...v40.1.2)
+
+* Make `tzdata` conditionally required based on platform. Thanks @rodrigobnogueira.
+
+### [v40.1.1 - 2026-01-13](https://github.com/joke2k/faker/compare/v40.1.0...v40.1.1)
+
+* Fix grouping for `-i` CLI parameter. Thanks @crd.
+
 ### [v40.1.0 - 2025-12-29](https://github.com/joke2k/faker/compare/v40.0.0...v40.1.0)
 
 * Add selective uniqueness with `.exclude_types()`. Thanks @rodrigobnogueira.
