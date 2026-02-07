@@ -1,5 +1,21 @@
 ## Changelog
 
+### [v40.4.0 - 2026-02-06](https://github.com/joke2k/faker/compare/v40.3.0...v40.4.0)
+
+* Add passport and `cie` for `it_IT`. Thanks @ElektroDuck.
+
+### [v40.3.0 - 2026-02-06](https://github.com/joke2k/faker/compare/v40.2.0...v40.3.0)
+
+* Add major Greek banks to `el_GR` bank provider. Thanks @bon12-gr.
+
+### [v40.2.0 - 2026-02-06](https://github.com/joke2k/faker/compare/v40.1.3...v40.2.0)
+
+* Update internet `pt_bR` provider (domains, tlds, slugify). Thanks @MorganaSilva.
+
+### [v40.1.3 - 2026-02-06](https://github.com/joke2k/faker/compare/v40.1.2...v40.1.3)
+
+* fix `pyfloat` `TypeError` when combining `positive=True` with `max_value`. Thanks @odrigobnogueira.
+ 
 ### [v40.1.2 - 2026-01-13](https://github.com/joke2k/faker/compare/v40.1.1...v40.1.2)
 
 * Make `tzdata` conditionally required based on platform. Thanks @rodrigobnogueira.
