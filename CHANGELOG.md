@@ -1,5 +1,46 @@
 ## Changelog
 
+### [v40.36.0 - 2026-07-24](https://github.com/joke2k/faker/compare/v40.35.0...v40.36.0)
+
+* Fix: correct `uk_UA` `bban_format` to 6 digits + 19 letters so `iban()` generates valid Ukrainian IBANs (#2417). Thanks @CedricConday.
+
+### [v40.35.0 - 2026-07-22](https://github.com/joke2k/faker/compare/v40.34.0...v40.35.0)
+
+* Fix: add correct `bban_format` so `ru_RU` `iban()` generates valid Russian IBANs (#2416). Thanks @CedricConday.
+
+### [v40.34.0 - 2026-07-22](https://github.com/joke2k/faker/compare/v40.33.2...v40.34.0)
+
+* Fix: correct BBAN length so `da_DK` `iban()` generates valid Danish IBANs (#2409). Thanks @CedricConday.
+
+### [v40.33.2 - 2026-07-22](https://github.com/joke2k/faker/compare/v40.33.1...v40.33.2)
+
+* Validate `positive=True` against a non-positive `max_value` in `pydecimal` (#2428). Thanks @Sreekant13.
+
+### [v40.33.1 - 2026-07-22](https://github.com/joke2k/faker/compare/v40.33.0...v40.33.1)
+
+* Make `uuid1()` and `uuid7()` reproducible under a fixed seed (#2427). Thanks @vidigoat.
+
+### [v40.33.0 - 2026-07-22](https://github.com/joke2k/faker/compare/v40.32.0...v40.33.0)
+
+* Add alphanumeric CNPJ support for `pt_BR` via flag (#2402). Thanks @moohbr.
+
+### [v40.32.0 - 2026-07-20](https://github.com/joke2k/faker/compare/v40.31.0...v40.32.0)
+
+* Add `allowed_path_traversal_elements` option to `file_path()` (#2397). Thanks @Ayushmann13479.
+* Fix Windows `file_path` depth=3 test regex. Thanks @fcurella.
+
+### [v40.31.0 - 2026-07-14](https://github.com/joke2k/faker/compare/v40.30.0...v40.31.0)
+
+* Fix: correct BBAN length so `pt_BR` `iban()` generates valid Brazilian IBANs (#2410). Thanks @CedricConday.
+
+### [v40.30.0 - 2026-07-14](https://github.com/joke2k/faker/compare/v40.29.0...v40.30.0)
+
+* Fix: generate valid Belgian bank codes in `nl_BE` `iban()` (#2412). Thanks @CedricConday.
+
+### [v40.29.0 - 2026-07-14](https://github.com/joke2k/faker/compare/v40.28.1...v40.29.0)
+
+* Fix: generate valid Spanish CCC control digits in `es_ES` `iban()` (#2404). Thanks @CedricConday.
+
 ### [v40.28.1 - 2026-07-01](https://github.com/joke2k/faker/compare/v40.28.0...v40.28.1)
 
 * Fix: compute valid ISO 7064 Mod 11,10 check digit for `de_DE` `vat_id` (#2403). Thanks @CedricConday.

@@ -5,6 +5,7 @@ import pytest
 from faker.providers.bank import Provider as BankProvider
 from faker.providers.bank.az_AZ import Provider as AzAzBankProvider
 from faker.providers.bank.cs_CZ import Provider as CsCZBankProvider
+from faker.providers.bank.da_DK import Provider as DaDkBankProvider
 from faker.providers.bank.de_CH import Provider as DeChBankProvider
 from faker.providers.bank.el_GR import Provider as ElGrBankProvider
 from faker.providers.bank.en_GB import Provider as EnGbBankProvider
@@ -20,6 +21,7 @@ from faker.providers.bank.mk_MK import Provider as MkMKBankProvider
 from faker.providers.bank.nl_BE import Provider as NlBeBankProvider
 from faker.providers.bank.no_NO import Provider as NoNoBankProvider
 from faker.providers.bank.pl_PL import Provider as PlPlBankProvider
+from faker.providers.bank.pt_BR import Provider as PtBrBankProvider
 from faker.providers.bank.pt_PT import Provider as PtPtBankProvider
 from faker.providers.bank.sk_SK import Provider as SkSKBankProvider
 from faker.providers.bank.th_TH import Provider as ThThBankProvider
@@ -96,6 +98,21 @@ class TestCsCz:
             assert is_valid_iban(iban)
             assert iban[:2] == CsCZBankProvider.country_code
             assert re.fullmatch(r"\d{2}\d{20}", iban[2:])
+
+
+class TestDaDk:
+    """Test da_DK bank provider"""
+
+    def test_bban(self, faker, num_samples):
+        for _ in range(num_samples):
+            assert re.fullmatch(r"\d{14}", faker.bban())
+
+    def test_iban(self, faker, num_samples):
+        for _ in range(num_samples):
+            iban = faker.iban()
+            assert is_valid_iban(iban)
+            assert iban[:2] == DaDkBankProvider.country_code
+            assert re.fullmatch(r"\d{2}\d{14}", iban[2:])
 
 
 class TestDeCh:
@@ -254,11 +271,19 @@ class TestEsEs:
             assert re.fullmatch(r"\d{20}", faker.bban())
 
     def test_iban(self, faker, num_samples):
+        def _ccc_control_digit(number):
+            check = sum(int(n) * 2**i for i, n in enumerate(number)) % 11
+            return str(check if check < 2 else 11 - check)
+
         for _ in range(num_samples):
             iban = faker.iban()
             assert is_valid_iban(iban)
             assert iban[:2] == EsEsBankProvider.country_code
             assert re.fullmatch(r"\d{2}\d{20}", iban[2:])
+            # the BBAN must carry valid Spanish CCC control digits
+            bban = iban[4:]
+            bank_branch, control, account = bban[:8], bban[8:10], bban[10:]
+            assert control == _ccc_control_digit("00" + bank_branch) + _ccc_control_digit(account)
 
 
 class TestEsMx:
@@ -380,6 +405,14 @@ class TestNlBe:
             numeric_iban = "".join(str(ord(char) - 55) if char.isalpha() else char for char in rearranged_iban)
             assert int(numeric_iban) % 97 == 1
 
+    def test_iban_stdnum(self, faker, num_samples):
+        try:
+            from stdnum import iban as iban_validator
+        except ImportError:
+            pytest.skip("stdnum not available")
+        for _ in range(num_samples):
+            iban_validator.validate(faker.iban())
+
     def test_swift8_use_dataset(self, faker, num_samples):
         for _ in range(num_samples):
             code = faker.swift8(use_dataset=True)
@@ -434,6 +467,21 @@ class TestPlPl:
             assert re.fullmatch(r"\d{2}\d{24}", iban[2:])
 
 
+class TestPtBr:
+    """Test pt_BR bank provider"""
+
+    def test_bban(self, faker, num_samples):
+        for _ in range(num_samples):
+            assert re.fullmatch(r"\d{23}[A-Z]{2}", faker.bban())
+
+    def test_iban(self, faker, num_samples):
+        for _ in range(num_samples):
+            iban = faker.iban()
+            assert is_valid_iban(iban)
+            assert iban[:2] == PtBrBankProvider.country_code
+            assert re.fullmatch(r"\d{2}\d{23}[A-Z]{2}", iban[2:])
+
+
 class TestPtPt:
     """Test pt_PT bank provider"""
 
@@ -467,6 +515,17 @@ class TestRuRu:
     def test_bank(self, faker, num_samples):
         for _ in range(num_samples):
             assert re.match(r"\D{3,41}", faker.bank())
+
+    def test_bban(self, faker, num_samples):
+        for _ in range(num_samples):
+            assert re.fullmatch(r"\d{14}[A-Z]{15}", faker.bban())
+
+    def test_iban(self, faker, num_samples):
+        for _ in range(num_samples):
+            iban = faker.iban()
+            assert is_valid_iban(iban)
+            assert iban[:2] == "RU"
+            assert re.fullmatch(r"\d{2}\d{14}[A-Z]{15}", iban[2:])
 
 
 class TestSkSk:
@@ -525,14 +584,14 @@ class TestUkUa:
 
     def test_bban(self, faker, num_samples):
         for _ in range(num_samples):
-            assert re.fullmatch(r"\d{27}", faker.bban())
+            assert re.fullmatch(r"\d{6}[A-Z]{19}", faker.bban())
 
     def test_iban(self, faker, num_samples):
         for _ in range(num_samples):
             iban = faker.iban()
             assert is_valid_iban(iban)
             assert iban[:2] == UkUaBankProvider.country_code
-            assert re.fullmatch(r"\d{2}\d{27}", iban[2:])
+            assert re.fullmatch(r"\d{2}\d{6}[A-Z]{19}", iban[2:])
 
 
 class TestZhCn:
